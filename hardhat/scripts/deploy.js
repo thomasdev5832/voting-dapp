@@ -18,3 +18,8 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
+// Contract Address deployed: 0x23908A11AF4ac69C18BF3C45a7b28fBc64d2F756
+
+// Successfully verified contract Voting on the block explorer.
+// https://mumbai.polygonscan.com/address/0x23908A11AF4ac69C18BF3C45a7b28fBc64d2F756#code

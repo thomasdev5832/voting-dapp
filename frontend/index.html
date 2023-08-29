@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting DApp</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+   
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+</head>
+
+<body>
+    <div id="connectMetamask">
+        <p id="connectWalletMessage">Connect your Wallet to vote.</p>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABDCAYAAADHyrhzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFgUlEQVR4nO1baYgcRRSu2O/1ZPFIvBGjGA1CDN5GYwxRPPFWUBEVxftGkURRERVPhOjG4I9EMF6ITDL9qjebSCSy/1TQP+L1Q38t/hAkEg27M6/apOTtTHdqhlnc3amencH+oFiorX5d/fWrd/UbpQoUKFCgQIECBXoEtSg80RCsYsJ1RuP6XhtMOMga77UVdURuJFhS8w3Bx0y412i0vT5Y4zgTvmDLKvBLxLA62BD8MNsPOKNBsMk+r/bzRoYhiDLGCf82BE8ZDecYwjN7bmhYKUeYNe7ZRwqs9kOEhrMcIv6sRqUTVB8giYKr0iPNGnfZ7Wr/joUy4WsZwxE8qPoIhuCDdO+1OLzWh8BKKnB8aO6x2XwMy1jjVrHedpsqyZyN1KGG4H25phqXFjkynmGN22sUXufKtmV1OGu8yxDe52Mw4S22rMJUPkd4k2M7nuyYDCb8PBVoy2pe9oAafnVudH9j7ZvOkRqWuYSCC5y5qquurHGHdy9C+GIqP4mCS535l/Mjg+BHx43d2Xi41x2CKo11y511u21ZDTiyh717jxie7joZTHiyxB2G4Dk7okDm7DZ1UF074N2xLQNHZ8RpeMBo+DSJgwtd2VarA2s6vJ7j8EYfI4mCy1032jUy+gEFGQ4KMhwUZDgoyHBQkOGgIMNBQUauZGh8pRFR/mytmjNTOXKtpNgc4W3ecpEY7zARnG/XK+wKGVYeIoZlnQRcrPF0Q/BdfkUcGE10cGXuZEwHkr3WonCxq0Ec4xIm/Cs/IrK8Z0+Nwqt7goxqXFqUlgalBpKRQfiFx4z0q6ajouExN10wBL+l5YRcyDARnGsIfjEaPnGToHqGCqOs8faEgotY405HbUnW2Fgd6beADKPt9siEn6VrEh1cnBsZrPHtVOA4zT1m4iGtmsOEtVQ9mTBxNvxTNS4tbC0ZetKMvWmG3PTCCB511tyTHxkxnsIav2TCtU22wC0H7ju3W11DW6XScZ7tws52ezQE76Vrajq8JpsfgqXOEVql8oIV7XC0hgnfaPeNwmj43iMZO5oq4TGcJy8lrYRL5V5qKi33f4IJ10jtJDcyUkLkTYivV5MgiYNLWOM/PjVk0kHwuMr7gRMKLkvtwEzAGm/O072yRjYanlV5w2hY3bjhrlYVnA7skDqsUcEe9PhddZ0cA7FNk903oeAKqc53svcMRsPG7A3EuET1ERquPWmNff6XZHCMSxyXv7FjgaYgwz8Z9Y9J8CETfm00futjMOE38pVdvpy1y6i7phm2rEJxq7aijspuTniaiWCFe30jWl2bt1ttBHwDs0IG1zt3xDD9ISk6E96dBj9u9mhieKQrMUY9ztgwK2QYgg3OW9ntJmQ1Hd4gayQiZcLfp/2WCfdOpfVBijoTrQcadzf2sWesMrCg62TYsponOUubBxlMz29Nhyd1oPYT32+nAjdPkgCv62QIJBNsISKRdD77/xCeMXO1h4fVFCGBVzsSu3dM4va2YKKxrIKnyhpJjuqh8ozIWDmV/YmGNvWbDcHS7pNB+/q8JC9gjVta+zVar5+OzTAaNhuC8n+MyLVJ4mpbS45dIaMWhYsNwUes8dbU1TLhS5LW27I6IF1ny+oQt5cjryFeTfbU8xGoJTWfNb4z0SnomwQ5hgSb2iVrPUmG6wqlL6y6uXS8lxGXFtoRNVdNgp4mo9vwTga7oTTBctVHkLKgY1PWdi6Q4CFH4Kuqj9DUcOejh3WsMrCANZrMWEVwtuoDSDt3GuPIX7fhriNwvVSXWe+J8FdUcLb7xNuNCFY0KuZZsCfVceULdpsqscaRvGOFXOIPjSNu17BPQt5Kj0yvj4YGr/FOhAs5e2KMfFa5ff8SSfbnzUYUKFCgQIECBQqozvEve18AaOvwrl8AAAAASUVORK5CYII=">
+        <button id="connectWallet">Connect MetaMask</button>
+    </div>
+    <div id="votingStation">
+        <div id="timer">
+            <p id="timerMessage"><span id="time">123</span> seconds left.</p>
+        </div>
+        <div id="mainBoard">
+            <table id="candidateBoard">
+                <tr>
+                    <th>ID Nº</th>
+                    <th>Candidate</th>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>Candidate 0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Candidate 1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Candidate 2</td>
+                </tr>
+            </table>
+        </div>
+        <div id="voteForm">
+            <p>Please select the ID of the candidate you would like to vote:</p>
+            <label>
+                <input type="number" id="vote" />
+                <button id="sendVote">Vote</button>
+            </label>
+        </div>
+        <div id="showResultContainer">
+            <button id="showResult">Show Result</button>
+        </div>
+        <div id="result">
+            <table id="resultBoard">
+                <tr>
+                    <th> ID No.</th>
+                    <th>Candidate</th>
+                    <th>Number of Votes</th>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>Candidate 0</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Candidate 1</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Candidate 2</td>
+                    <td>1</td>
+                </tr>
+            </table>
+        </div>
+        <div id="admin">
+            <p id="adminHeading">Only for admins</p>
+            <div id="tools">
+                <div id="startElection">
+                    <p id="startElectionMessage">Start Election</p>
+                    <input type="text" id="candidates" placeholder="Names separated by comma (,)" />
+                    <input type="number" id="electionDuration" placeholder="Duration in minutes" />
+                    <button id="startAnElection">Start Election</button>
+                </div>
+                <div id="addCandidate">
+                    <p id="addCandidateMessage">Add a Candidate</p>
+                    <input type="text" id="candidate" placeholder="Candidate name" />
+                    <button id="addTheCandidate">Add Candidate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
